@@ -1,5 +1,6 @@
 # TouchIndicators
-**TouchIndicators** is a small Swift Package that enables your app to show touch indicators in screen recordings and screenshots. Compatible with both UIKit and SwiftUI projects!
+Unlike Android, iOS does not get an option to show touches, sometimes making it harder to understand which buttons users press to get to the problem, [especially with `UICollectionView`-backed Lists and Forms in SwiftUI](https://x.com/leonatan/status/1709161093392703642).  
+Here's where **TouchIndicators** package comes to the rescue! It is a small Swift package that enables your app to show touch indicators in screen recordings and screenshots, and is compatible with both UIKit and SwiftUI projects.
 
 ![Platform badge] ![OS badge] ![Swift badge]
 
