@@ -9,6 +9,8 @@
 import UIKit
 
 extension UIWindow {
+    /// Touch indicator appearance configuration.
+    public static var touchIndicatorConfiguration: TouchIndicatorConfiguration = .default
     /// Enables or disables touch indicators on all instances of `UIWindow`.
     public static var showsTouches: Bool = false {
         didSet {
@@ -48,16 +50,23 @@ extension UIWindow {
 
         for touch in touches {
             let touchLocation = touch.location(in: self)
+            let configuration = Self.touchIndicatorConfiguration
 
             switch touch.phase {
                 case .began:
                     let touchIndicatorLayer = CALayer()
-                    touchIndicatorLayer.backgroundColor = UIColor.gray.withAlphaComponent(0.5).cgColor
-                    touchIndicatorLayer.borderWidth = 1
-                    touchIndicatorLayer.borderColor = UIColor.gray.cgColor
-                    touchIndicatorLayer.cornerRadius = 15
-                    touchIndicatorLayer.frame = CGRect(x: touchLocation.x - 15, y: touchLocation.y - 15, width: 30, height: 30)
+                    touchIndicatorLayer.backgroundColor = configuration.backgroundColor.cgColor
+
+                    if case .solid(let width, let color) = configuration.border {
+                        touchIndicatorLayer.borderWidth = width
+                        touchIndicatorLayer.borderColor = color.cgColor
+                    }
+
+                    touchIndicatorLayer.cornerRadius = configuration.size / 2
+                    touchIndicatorLayer.frame.size = CGSize(width: configuration.size, height: configuration.size)
+                    touchIndicatorLayer.position = touchLocation
                     layer.addSublayer(touchIndicatorLayer)
+
                     Self.touchIndicatorLayers[touch] = touchIndicatorLayer
                 case .moved:
                     CATransaction.begin()
