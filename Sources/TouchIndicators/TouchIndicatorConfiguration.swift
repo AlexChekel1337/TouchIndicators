@@ -17,6 +17,12 @@ public struct TouchIndicatorConfiguration {
     public var size: CGFloat
     public var backgroundColor: UIColor
     public var border: BorderKind
+
+    public init(size: CGFloat, backgroundColor: UIColor, border: BorderKind) {
+        self.size = size
+        self.backgroundColor = backgroundColor
+        self.border = border
+    }
 }
 
 public extension TouchIndicatorConfiguration {
