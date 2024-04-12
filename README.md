@@ -7,7 +7,7 @@ Here's where **TouchIndicators** comes to the rescue! It is a small Swift packag
 ![Example]
 
 ## Usage
-You can enable or disable touch indicators at any moment by updaing `showsTouches` property on `UIWindow`:
+You can enable or disable touch indicators at any moment by updating `showsTouches` property on `UIWindow`:
 ```swift
 import SwiftUI
 import TouchIndicators
@@ -40,7 +40,7 @@ UIWindow.touchIndicatorConfiguration.size = 44
 let configuration = TouchIndicatorConfiguration(
     size: 44,
     backgroundColor: .red.withAlphaComponent(0.5),
-    border: .solid(1, .red)
+    border: .solid(1, color: .red)
 )
 UIWindow.touchIndicatorConfiguration = configuration
 ```
