@@ -16,7 +16,9 @@ import UIKit
 @main
 struct MyApp: App {
     var body: some Scene {
-        ContentView()
+        WindowGroup {
+            ContentView()
+        }
     }
 
     init() {
